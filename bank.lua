@@ -81,13 +81,15 @@ local function teleportToVaults()
 	if not cashiersFolder then return end
 
 	local char = Player.Character
-	local bp = Player:FindFirstChild("Backpack")
-	if char and bp then
-		local shotgun = bp:FindFirstChild("[Drum-Shotgun]")
-		if shotgun then
-			char.Humanoid:EquipTool(shotgun)
-			task.wait(0.2)
-			log("Equipped Drum-Shotgun before vault teleport")
+	if char and not char:FindFirstChild("[Drum-Shotgun]") then
+		local bp = Player:FindFirstChild("Backpack")
+		if bp then
+			local shotgun = bp:FindFirstChild("[Drum-Shotgun]")
+			if shotgun then
+				char.Humanoid:EquipTool(shotgun)
+				task.wait(0.2)
+				log("Equipped Drum-Shotgun before vault teleport")
+			end
 		end
 	end
 
@@ -553,12 +555,14 @@ local function mainFarmingLoop()
 				task.wait(0)
 
 				local charEq = Player.Character
-				local bpEq = Player:FindFirstChild("Backpack")
-				if charEq and bpEq then
-					local shotgun = bpEq:FindFirstChild("[Drum-Shotgun]")
-					if shotgun then
-						charEq.Humanoid:EquipTool(shotgun)
-						task.wait(0.3)
+				if charEq and not charEq:FindFirstChild("[Drum-Shotgun]") then
+					local bpEq = Player:FindFirstChild("Backpack")
+					if bpEq then
+						local shotgun = bpEq:FindFirstChild("[Drum-Shotgun]")
+						if shotgun then
+							charEq.Humanoid:EquipTool(shotgun)
+							task.wait(0.3)
+						end
 					end
 				end
 
